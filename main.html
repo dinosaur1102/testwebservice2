@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>html</title>
+</head>
+<script src="test.js"></script>
+<body>
+    <header>
+        <h1 id="Welcome" title="Welcome to my Website">
+            Welcome!
+        </h1>
+    </header>
+    <article>
+        <button title="Click to change background" id="btnhello" onclick="openhellobutton(), test=2, console.log(test)">hello</button> <div id="v-line"></div>
+    </article>
+    <style>
+        #v-line{
+            border-right: thick solid rgb(92, 92, 92);
+            height: 50px;
+            width: 108em;
+            right: 25px;
+        }
+        #Welcome{
+            font: bold;
+            font-size: 5em;
+            padding: auto;
+            text-align: center;
+            text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+            color: black;
+            
+        }
+        #btnhello:hover{
+            color:gray;
+            border: solid 2px black;
+        }
+        #btnhello {
+            font-weight: bold;
+            font-size: 25px;
+            width: 100px;
+            height: 50px;
+            position: fixed;
+            right: 50px;
+            text-align: center;
+            border: solid 2px grey;
+            border-radius: 12px;
+        }
+    </style>
+</body>
+</html>
