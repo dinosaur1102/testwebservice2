@@ -2,21 +2,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
 
 
-        #v-line{
-            border-right: thick solid rgb(92, 92, 92);
-            height: 50px;
-            width: 89%;
+        #nav1{
+            border-top: thin solid rgb(92, 92, 92);
             position: fixed;
+            width: 100%;
+            height: 0.1px;
+            top: 200px;
+            left: 0;
+            right: 0;
+        } 
+        #v-line{
+            border-right: thick solid rgb(102, 118, 148);
+            height: 50px;
+            width: 15px;
+            position: fixed;
+            top: 300px;
+            left: 89%;
         }
-        #Welcome{
-            display: inline-block;
-            padding-left: 40%;
+        #v-line2{
+            border-right: thick solid rgb(102, 118, 148);
+            height: 50px;
+            width: 15px;
+            position: fixed;
+            top: 220px;
+            left: 89%;
+        }
+        #settingloginbtn{
+            font-family: 'Lato', sans-serif;
+            font-size: 25px;
+            color: rgb(123, 163, 236);
+            width: 120px;
+            height: 50px;
+            position: fixed;
+            top: 220px;
+            right: 50px;
+            text-align: center;
+            border: solid 2px rgb(123, 163, 236);
+        }
+        #settingloginbtn:hover{
+            color: gray;
+            border: solid 2px black;
+        }
+        #maintitle{
+            text-align: center;
             font: bold;
             font-size: 5em;
             padding: auto;
-            text-align: center;
-            text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
-            color: black;
+            color: rgb(123, 163, 236);
             
         }
         #btnhello:hover{
@@ -26,11 +58,12 @@
         #btnhello {
             font-family: 'Lato', sans-serif;
             font-size: 25px;
+            color: rgb(123, 163, 236);
             width: 120px;
             height: 50px;
             position: fixed;
+            top: 300px;
             right: 50px;
             text-align: center;
-            border: solid 2px grey;
-            border-radius: 12px;
+            border: solid 2px rgb(123, 163, 236);
         }

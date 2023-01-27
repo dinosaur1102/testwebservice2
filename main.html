@@ -8,14 +8,10 @@
 <body>
     <link rel="stylesheet" href="mainfiles.css"></style>
     <header>
-        <h1 id="Welcome" title="Welcome to my Website" onclick="window.location.reload()" style="cursor: pointer;">
-            Welcome!
+        <h1 id="maintitle" title="Welcome to my Website" onclick="window.location.reload()" style="cursor: pointer;">
+            HANEUL
         </h1>
-        <hr size="5" noshade="0", width=200%>
     </header>
-    <article>
-        <button title="Click to change background" id="btnhello" onclick="openhellobutton(), test=2, console.log(test)" style="cursor: pointer;">Setting</button> <div id="v-line"></div>
-    </article>
     <form>
         <h1>회원가입</h1>
         <div>
@@ -30,20 +26,6 @@
         </button>
         <button>로그인하러 가기</button>
     </form>
-    <form>
-        <h1>로그인</h1>
-        <div>
-            email : <input type="email" id="signinemail">
-        </div>
-        
-        <div>
-            password : <input type="password" id="signinpassword">
-        </div>
-        <button type="submit" id="signin">
-            로그인 하기
-        </button>
-        <button>회원가입 하러가기</button>
-        </form>
         <br>
         <button id="googleidloginwithbtn">구글 아이디로 로그인</button>
         <form>
@@ -55,8 +37,12 @@
                 인증번호입력 : <input id="checkNumber"/>
                 <button id="checkNumberbutton">인증확인</button>
         </form>
-
-
+        <nav>
+            <div id="nav1">
+                <div id="v-line"><button title="Click to change background" id="btnhello" onclick="openhellobutton(), test=2, console.log(test)" style="cursor: pointer;">SETTING</button> </div>
+                <div id="v-line2"><button title="Click to go to login page" id="settingloginbtn" style="cursor: pointer;" onclick="window.open('login.html', 'login', 'width=700, height=700, top=100, left=50')">LOGIN</button> </div>
+            </div>
+        </nav>
         <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
