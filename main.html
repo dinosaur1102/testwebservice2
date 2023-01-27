@@ -6,6 +6,7 @@
 </head>
 <script src="test.js"></script>
 <body>
+    <link rel="stylesheet" href="mainfiles.css"></style>
     <header>
         <h1 id="Welcome" title="Welcome to my Website" onclick="window.location.reload()" style="cursor: pointer;">
             Welcome!
@@ -42,13 +43,27 @@
             로그인 하기
         </button>
         <button>회원가입 하러가기</button>
-    </form>
+        </form>
+        <br>
+        <button id="googleidloginwithbtn">구글 아이디로 로그인</button>
+        <form>
+                번호입력 : <input id="phoneNumber" />
+                <button id="phoneNumberbutton">확인</button>
+        </form>
+        <br>
+        <form>
+                인증번호입력 : <input id="checkNumber"/>
+                <button id="checkNumberbutton">인증확인</button>
+        </form>
+
+
         <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithPhoneNumber, RecaptchaVerifier  } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
 
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -66,9 +81,9 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
-
+        
             const auth = getAuth();
+            auth.languageCode = 'ko';
 
         document.getElementById('signup').addEventListener('click', (event) => {
             event.preventDefault();
@@ -103,47 +118,80 @@
             const errorMessage = error.message;
         });
 
-        })
-        
+    });
+
+    const provider = new GoogleAuthProvider();
+
+    document.getElementById("googleidloginwithbtn").addEventListener("click", (event) => {
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+            console.log(result);
+        }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                console.log(error);
+        });
+    });
+
+    window.recaptchaVerifier = new RecaptchaVerifier('phoneNumberbutton', {
+        'size': 'invisible',
+        'callback': (response) => {
+            // reCAPTCHA solved, allow signInWithPhoneNumber.
+            onSignInSubmit();
+        }
+    }, auth);
+
+    document.getElementById('phoneNumberbutton').addEventListener('click', () => {
+        event.preventDefault();
+
+        const phoneNumber = document.getElementById('phoneNumber').value
+        const appVerifier = window.recaptchaVerifier;
+
+        signInWithPhoneNumber(auth, '+82'+phoneNumber, appVerifier)
+        .then((confirmationResult) => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+            window.confirmationResult = confirmationResult;
+        // ...
+            console.log(confirmationResult);
+        }).catch((error) => {
+        // Error; SMS not sent
+            console.log(error);
+        // ...
+        });
+    })
+
+    document.getElementById('checkNumberbutton').addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const code = document.getElementById('checkNumber').value
+
+        confirmationResult.confirm(code).then((result) => {
+        // User signed in successfully.
+        const user = result.user;
+        // ...
+        console.log(result);
+        }).catch((error) => {
+        // User couldn't sign in (bad verification code?)
+        // ...
+        consoel.log(error);
+        });
+
+    })
+
 
         </script>
-    <style>
-
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
-
-
-        #v-line{
-            border-right: thick solid rgb(92, 92, 92);
-            height: 50px;
-            width: 89%;
-            position: fixed;
-        }
-        #Welcome{
-            display: inline-block;
-            padding-left: 40%;
-            font: bold;
-            font-size: 5em;
-            padding: auto;
-            text-align: center;
-            text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
-            color: black;
-            
-        }
-        #btnhello:hover{
-            color:gray;
-            border: solid 2px black;
-        }
-        #btnhello {
-            font-family: 'Lato', sans-serif;
-            font-size: 25px;
-            width: 120px;
-            height: 50px;
-            position: fixed;
-            right: 50px;
-            text-align: center;
-            border: solid 2px grey;
-            border-radius: 12px;
-        }
-    </style>
 </body>
 </html>
