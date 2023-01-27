@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+
+        #v-line{
+            border-right: thick solid rgb(92, 92, 92);
+            height: 50px;
+            width: 89%;
+            position: fixed;
+        }
+        #Welcome{
+            display: inline-block;
+            padding-left: 40%;
+            font: bold;
+            font-size: 5em;
+            padding: auto;
+            text-align: center;
+            text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+            color: black;
+            
+        }
+        #btnhello:hover{
+            color:gray;
+            border: solid 2px black;
+        }
+        #btnhello {
+            font-family: 'Lato', sans-serif;
+            font-size: 25px;
+            width: 120px;
+            height: 50px;
+            position: fixed;
+            right: 50px;
+            text-align: center;
+            border: solid 2px grey;
+            border-radius: 12px;
+        }
